@@ -38,16 +38,15 @@ class NewsApiSwitcher(
     private fun switchToAppBasedNextcloudApi() {
         val account = SingleAccountHelper.getCurrentSingleSignOnAccount(context)
 
-        val callback: NextcloudAPI.ApiConnectedListener =
-            object : NextcloudAPI.ApiConnectedListener {
-                override fun onConnected() {
-                    Timber.d("Connected to Nextcloud app")
-                }
-
-                override fun onError(e: Exception) {
-                    Timber.e(e, "Failed to connect to Nextcloud app")
-                }
+        val callback = object : NextcloudAPI.ApiConnectedListener {
+            override fun onConnected() {
+                Timber.d("Connected to Nextcloud app")
             }
+
+            override fun onError(e: Exception) {
+                Timber.e(e, "Failed to connect to Nextcloud app")
+            }
+        }
 
         val nextcloudApi = NextcloudAPI(
             context,
