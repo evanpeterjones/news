@@ -149,7 +149,6 @@ class AppActivity : AppCompatActivity() {
 
                 R.id.bookmarksFragment -> {
                     navigationView.setCheckedItem(R.id.bookmarks)
-
                     navController.navigate(
                         R.id.bookmarksFragment,
                         bundleOf(Pair("filter", EntriesFilter.Bookmarked))
